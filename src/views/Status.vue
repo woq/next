@@ -104,7 +104,7 @@ export default {
     dateFormat(time) {
       //return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
       let minutes = dayjs().diff(dayjs(time),'minutes')
-      return  Math.round(minutes / 60) + ' 时 ' + minutes % 60 + ' 分'
+      return  Math.ceil(minutes / 60) + ' 时 ' + minutes % 60 + ' 分'
     }
   }
 }
