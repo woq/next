@@ -4,37 +4,42 @@
       <Nav/>
     </el-header>
     <el-main>
-      <div class="status">
           <el-button @click="addSome">手动更新</el-button>
             <el-alert
-                :title=this.updateTime
+                :title=updateTime
                 type="info"
                 show-icon>
             </el-alert>
               <el-table
                 stripe
                 border
+                fit
+                style="display: flex; flex-direction: column; width: 100%;"
                 :data="links">
                     <el-table-column
                         prop="sango_id"
                         label="ID"
-                        width="180">
+                        align="center"
+                        >
                     </el-table-column>
                     <el-table-column
                         prop="sango_name"
                         label="君主"
-                        width="180">
+                        align="center">
                     </el-table-column>
                     <el-table-column
                         prop="sango_unionName"
-                        label="联盟">
+                        label="联盟"
+                        align="center">
                     </el-table-column>
                     <el-table-column
                         prop="sango_linkAddTime"
-                        label="链接添加时间">
+                        label="链接添加时间"
+                        align="center">
+                      <template slot-scope="scope">{{ scope.row.sango_linkAddTime | dateFormat }}</template>
                     </el-table-column>
                 </el-table>
-      </div>
+
     </el-main>
   </el-container>
 </template>
@@ -42,7 +47,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
-import moment from 'moment'
+import dayjs from 'dayjs'
 export default {
   name: 'Home',
   components: {
@@ -72,8 +77,8 @@ export default {
             }
         )
           .then(res => {
-              moment.locale('zh-cn')
-              this.updateTime = "更新时间   " + moment().calendar();
+              dayjs.locale('zh-cn')
+              this.updateTime = "更新时间   " + dayjs().format('YYYY-MM-DD HH:mm:ss');
               this.links = res.data
           })
           .catch(err => {
@@ -94,12 +99,17 @@ export default {
           center: true
         })
       }
+  },
+  filters: {
+    dateFormat(time) {
+      return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+    }
   }
 }
 </script>
 <style>
 .el-table{
-    width: 95vw;
+    width: 50vw;
     margin-top: 3vh;
     font-size: 0.5rem;
     text-align: center;

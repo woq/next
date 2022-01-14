@@ -70,11 +70,10 @@ export default {
           .catch(err => {
               if (err.response.status == 401) {
                   this.$message.error('登录失效，请重新登录')
-                  //this.$router.push('/login')
+                  this.$router.push('/login')
               }
               else {
                   this.$message.error('意外错误')
-                  //this.$router.push('/login')
               }
           })
       },

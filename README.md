@@ -10,6 +10,6 @@ the next front-end for sangoo project.
 - Stlye compoment
   - element
   - tailwind
-  - butfy
+  - buefy
 - Services
   - axios
