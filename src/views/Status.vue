@@ -34,7 +34,7 @@
                     </el-table-column>
                     <el-table-column
                         prop="sango_linkAddTime"
-                        label="链接添加时间"
+                        label="存活时间"
                         align="center">
                       <template slot-scope="scope">{{ scope.row.sango_linkAddTime | dateFormat }}</template>
                     </el-table-column>
@@ -102,7 +102,9 @@ export default {
   },
   filters: {
     dateFormat(time) {
-      return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+      //return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+      let minutes = dayjs().diff(dayjs(time),'minutes')
+      return  Math.round(minutes / 60) + ' 时 ' + minutes % 60 + ' 分'
     }
   }
 }
