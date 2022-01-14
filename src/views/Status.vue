@@ -30,30 +30,6 @@
                         label="联盟">
                     </el-table-column>
                     <el-table-column
-                        prop="defend_status"
-                        label="驻防">
-                    </el-table-column>
-                    <el-table-column
-                        prop="defend_mainCity"
-                        label="主城">
-                    </el-table-column>
-                    <el-table-column
-                        prop="defend_auxiliaryCities"
-                        label="辅城">
-                    </el-table-column>
-                    <el-table-column
-                        prop="operate_defendLastTime"
-                        label="驻防更新">
-                    </el-table-column>
-                    <el-table-column
-                        prop="defend_num"
-                        label="驻防总数">
-                    </el-table-column>
-                    <el-table-column
-                        prop="defend_numShould"
-                        label="驻防应有">
-                    </el-table-column>
-                    <el-table-column
                         prop="sango_linkAddTime"
                         label="链接添加时间">
                     </el-table-column>

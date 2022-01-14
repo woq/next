@@ -1,24 +1,15 @@
 # next
 
-## Project setup
-```
-yarn install
-```
+the next front-end for sangoo project.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Stack
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Vuejs
+  - vue cli
+  - vue router
+- Stlye compoment
+  - element
+  - tailwind
+  - butfy
+- Services
+  - axios
