@@ -61,7 +61,7 @@ export default {
       updateTime: '',
     } 
   },
-  beforeUpdate() {
+  mounted() {
       if (process.env.NODE_ENV === 'development') {
         this.url = '/api'
       } else {
