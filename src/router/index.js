@@ -40,11 +40,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (localStorage.getItem('access') != null) {
+    console.log('Got access token Then Jump') 
     next()
     } else {
       if (to.path === '/login' | to.path === '/') {
+        console.log('Login Jump') 
         next()
       }else {
+        console.log(' Jump Login') 
         next('/login')
       }
     }

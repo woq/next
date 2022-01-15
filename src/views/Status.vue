@@ -6,7 +6,7 @@
     <el-main>
           <el-button @click="addSome">手动更新</el-button>
             <el-alert
-                :title=updateTime
+                :title='updateTime'
                 type="info"
                 show-icon>
             </el-alert>
@@ -61,7 +61,7 @@ export default {
       updateTime: '',
     } 
   },
-  beforeMount() {
+  beforeUpdate() {
       if (process.env.NODE_ENV === 'development') {
         this.url = '/api'
       } else {
@@ -84,11 +84,10 @@ export default {
           .catch(err => {
               if (err.response.status == 401) {
                   this.$message.error('登录失效，请重新登录')
-                  //this.$router.push('/login')
+                  this.$router.push('/login')
               }
               else {
                   this.$message.error('意外错误')
-                  //this.$router.push('/login')
               }
           })
       },

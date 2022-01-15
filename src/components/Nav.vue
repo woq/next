@@ -50,10 +50,18 @@
 export default {
     methods: {
         gotoStatus() {
-            this.$router.push('/status')
+            this.$router.push({ name: 'Status' })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err)
+                this.$router.push({ name: 'Status' })
+              })
         },
         gotoHome() {
-            this.$router.push('/home')
+          console.log('gotoHome')
+          this.$router.push('/home')
         }
     }
 }
