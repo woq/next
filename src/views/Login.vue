@@ -1,38 +1,42 @@
 <template>
-    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-md w-full space-y-8">
-      <div>
-        <img class="mx-auto h-12 w-auto" src="login.svg" alt="Workflow">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          全新登录
-        </h2>
-        <p class="mt-2 text-center text-sm text-gray-600">
-          或
-          <a @click="seedMessage" class="font-medium text-indigo-600 hover:text-indigo-500">
-            先走一步
-          </a>
-        </p>
-      </div>
-      <el-form ref="loginForm" :model="user" :rules="rules" status-icon class="mt-8 space-y-6">
-        <div class="rounded-md shadow-sm -space-y-px">
-          <el-form-item prop="username">
-            <el-input v-model="user.username" placeholder="请输入用户名" prefix-icon>
-              <i slot="prefix" class="el-icon-user-solid"></i>
-            </el-input>
-          </el-form-item>
-          <el-form-item id="password" prop="password">
-            <el-input v-model="user.password" show-password placeholder="请输入密码" @keyup.enter.native="doLogin">
-              <i slot="prefix" class="el-icon-lock"></i>
-            </el-input>
-          </el-form-item>
+    <div class="login">
+      <section class="hero is-success is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-black">登录</h3>
+                    <hr class="login-hr">
+                    <p class="subtitle has-text-black">开门需要个钥匙</p>
+                    <div class="box">
+                            <el-form ref="loginForm" :model="user" :rules="rules" status-icon class="mt-8 space-y-6">
+                      <div class="rounded-md shadow-sm -space-y-px">
+                        <el-form-item prop="username">
+                          <el-input v-model="user.username" placeholder="你的用户名" prefix-icon>
+                            <i slot="prefix" class="el-icon-user-solid"></i>
+                          </el-input>
+                        </el-form-item>
+                        <el-form-item id="password" prop="password">
+                          <el-input v-model="user.password" show-password placeholder="你的密码" @keyup.enter.native="doLogin">
+                            <i slot="prefix" class="el-icon-lock"></i>
+                          </el-input>
+                        </el-form-item>
+                      </div>
+                      <el-form-item>
+                        <el-button type="primary" @click="doLogin()" class="button is-block is-info is-large is-fullwidth">
+                          提交
+                          </el-button>
+                      </el-form-item>
+                    </el-form>
+                    </div>
+                    <p class="has-text-grey">
+                        <a>全新注册</a> &nbsp;·&nbsp;
+                        <a>忘记密码</a> &nbsp;·&nbsp;
+                        <a>需要帮助?</a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <el-form-item>
-          <el-button type="primary" @click="doLogin()" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            登录
-            </el-button>
-        </el-form-item>
-      </el-form>
-     </div>
+    </section>
     </div>
 </template>
 <script>
@@ -49,11 +53,11 @@ export default {
 
     rules: {
       username: [
-        { required: true, message: '请输入用户名', trigger: 'blur' },
+        { required: true, message: '你的用户名', trigger: 'blur' },
         { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
       ],
       password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
+        { required: true, message: '你的密码', trigger: 'blur' },
         { min: 6, max: 30, message: '长度在 6 到 18 个字符', trigger: 'blur' }
       ]
     }
@@ -116,4 +120,55 @@ export default {
   }
 </script>
 <style scoped>
+html,body {
+  font-family: 'Questrial', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+.hero.is-success {
+  background: #F2F6FA;
+}
+.hero .nav, .hero.is-success .nav {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.box {
+  margin-top: 2rem;
+}
+.avatar {
+  margin-top: -70px;
+  padding-bottom: 20px;
+}
+.avatar img {
+  padding: 5px;
+  background: #fff;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+}
+input {
+  font-weight: 300;
+}
+p {
+  font-weight: 700;
+}
+p.subtitle {
+  padding-top: 1rem;
+}
+
+.login-hr{
+  border-bottom: 1px solid black;
+}
+
+.has-text-black{
+  color: black;
+}
+
+.field{
+  padding-bottom: 10px;
+}
+
+.fa{
+  margin-left: 5px; 
+}
 </style>

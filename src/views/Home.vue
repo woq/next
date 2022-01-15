@@ -4,17 +4,15 @@
       <Nav/>
     </el-header>
     <el-main>
-      <div class="flex justify-center items-center" style="height: 50vh;width: 100%;">
-      <el-form ref="loginForm"  class="mt-8 space-y-6" style="width: 30rem;">
-        <div class="rounded-md shadow-sm -space-y-px">
+      <div class="addlink">
+      <el-form ref="loginForm"  style="width: 30rem;">
           <el-form-item >
-            <el-input v-model="urls" type="textarea" placeholder="请输入链接" :autosize="{ minRows: 10, maxRows: 200}">
+            <el-input v-model="urls" type="textarea" placeholder="请输入链接 多个链接用回车分开 越多链接会花费越多时间" :autosize="{ minRows: 10, maxRows: 200}">
               <i slot="prefix" class="el-icon-lock"></i>
             </el-input>
           </el-form-item>
-        </div>
         <el-form-item>
-          <el-button type="primary" @click="addSome" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <el-button type="primary" @click="addSome">
             提交
             </el-button>
         </el-form-item>
@@ -87,3 +85,12 @@ export default {
   }
 }
 </script>
+<style>
+.addlink{
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
