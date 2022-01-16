@@ -13,10 +13,10 @@
         <b-navbar-item href="#" tag="router-link" :to="{ path: '/status' }">
           所有状态
         </b-navbar-item>
-        <b-navbar-item href="#" tag="router-link" :to="{ path: '/addLog' }">
+        <b-navbar-item href="#" tag="router-link" :to="{ path: '/addlog' }">
           添加记录
         </b-navbar-item>
-        <b-navbar-item href="#" tag="router-link" :to="{ path: '/expiredLog' }">
+        <b-navbar-item href="#" tag="router-link" :to="{ path: '/expiredlog' }">
           过期记录
         </b-navbar-item>
       </b-navbar-dropdown>
