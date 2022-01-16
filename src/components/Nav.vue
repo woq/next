@@ -42,20 +42,6 @@
 <script>
 export default {
     methods: {
-        gotoStatus() {
-            this.$router.push({ name: 'Status' })
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((err) => {
-                console.log(err)
-                this.$router.push({ name: 'Status' })
-              })
-        },
-        gotoHome() {
-          console.log('gotoHome')
-          this.$router.push('/home')
-        },
         logout() {
           localStorage.removeItem('access')
           this.$router.push('/login')
