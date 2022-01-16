@@ -6,14 +6,16 @@
       </b-navbar-item>
     </template>
     <template #start>
-      <b-navbar-item href="#" tag="router-link" :to="{ path: '/home' }" active>
-        添加链接
-      </b-navbar-item>
-      <b-navbar-item href="#" tag="router-link" :to="{ path: '/status' }">
-        链接状态
-      </b-navbar-item>
+      <b-navbar-dropdown label="链接">
+        <b-navbar-item href="#" tag="router-link" :to="{ path: '/home' }">
+          添加
+        </b-navbar-item>
+        <b-navbar-item href="#" tag="router-link" :to="{ path: '/status' }">
+          状态
+        </b-navbar-item>
+      </b-navbar-dropdown>
       <b-navbar-item href="#" tag="router-link" :to="{ path: '/defend' }">
-        驻防状态
+        驻防
       </b-navbar-item>
       <b-navbar-dropdown label="每周">
         <b-navbar-item href="#"> 周联盟战绩 </b-navbar-item>

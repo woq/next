@@ -28,6 +28,12 @@
             scope.row.sango_linkAddTime | dateFormat
           }}</template>
         </el-table-column>
+        <el-table-column
+          prop="token_lastGenerateTime"
+          label="验证生成时间"
+          align="center"
+        >
+        </el-table-column>
       </el-table>
     </el-main>
   </el-container>
