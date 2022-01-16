@@ -6,25 +6,31 @@
       </b-navbar-item>
     </template>
     <template #start>
-      <b-navbar-dropdown label="链接">
+      <b-navbar-dropdown label="链接" hoverable>
         <b-navbar-item href="#" tag="router-link" :to="{ path: '/home' }">
-          添加
+          链接添加
         </b-navbar-item>
         <b-navbar-item href="#" tag="router-link" :to="{ path: '/status' }">
-          状态
+          所有状态
         </b-navbar-item>
+        <b-navbar-item href="#" tag="router-link" :to="{ path: '/addLog' }">
+          添加记录
+        </b-navbar-item>
+        <b-navbar-item href="#" tag="router-link" :to="{ path: '/expiredLog' }">
+          过期记录
+        </b-navbar-item>
+      </b-navbar-dropdown>
+      <b-navbar-dropdown label="每周" hoverable>
+        <b-navbar-item href="#"> 周联盟战绩 </b-navbar-item>
+        <b-navbar-item href="#"> 周联盟消费 </b-navbar-item>
+      </b-navbar-dropdown>
+      <b-navbar-dropdown label="每月" hoverable>
+        <b-navbar-item href="#"> 月王族等级 </b-navbar-item>
+        <b-navbar-item href="#"> 月天下第一 </b-navbar-item>
       </b-navbar-dropdown>
       <b-navbar-item href="#" tag="router-link" :to="{ path: '/defend' }">
         驻防
       </b-navbar-item>
-      <b-navbar-dropdown label="每周">
-        <b-navbar-item href="#"> 周联盟战绩 </b-navbar-item>
-        <b-navbar-item href="#"> 周联盟消费 </b-navbar-item>
-      </b-navbar-dropdown>
-      <b-navbar-dropdown label="每月">
-        <b-navbar-item href="#"> 月王族等级 </b-navbar-item>
-        <b-navbar-item href="#"> 月天下第一 </b-navbar-item>
-      </b-navbar-dropdown>
     </template>
 
     <template #end>
