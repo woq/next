@@ -1,42 +1,65 @@
 <template>
-  <el-container>
-    <el-header>
-      <Nav />
-    </el-header>
-    <el-main>
-      <el-button @click="addSome">手动更新</el-button>
-      <el-alert :title="updateTime" type="info" show-icon> </el-alert>
-      <el-table
-        stripe
-        border
-        fit
-        style="display: flex; flex-direction: column; width: 100%"
-        :data="links"
-      >
-        <el-table-column prop="sango_id" label="ID" align="center">
-        </el-table-column>
-        <el-table-column prop="sango_name" label="君主" align="center">
-        </el-table-column>
-        <el-table-column prop="sango_unionName" label="联盟" align="center">
-        </el-table-column>
-        <el-table-column
-          prop="sango_linkAddTime"
-          label="存活时间"
-          align="center"
+  <div class="status">
+    <Nav />
+    <div class="status_table">
+      <section>
+        <b-table
+          :data="isEmpty ? [] : links"
+          bordered
+          striped
+          hoverable
+          :loading="isLoading"
+          focusable
+          mobile-cards
         >
-          <template slot-scope="scope">{{
-            scope.row.sango_linkAddTime | dateFormat
-          }}</template>
-        </el-table-column>
-        <el-table-column
-          prop="token_lastGenerateTime"
-          label="验证生成时间"
-          align="center"
-        >
-        </el-table-column>
-      </el-table>
-    </el-main>
-  </el-container>
+          <b-table-column field="sango_id" label="ID" v-slot="props" centered>
+            <span class="tag is-warning is-light">{{
+              props.row.sango_id
+            }}</span>
+          </b-table-column>
+
+          <b-table-column
+            field="sango_name"
+            label="君主"
+            v-slot="props"
+            centered
+          >
+            <span class="tag is-info">{{ props.row.sango_name }}</span>
+          </b-table-column>
+
+          <b-table-column
+            field="sango_unionName"
+            label="联盟"
+            v-slot="props"
+            centered
+          >
+            <span class="tag is-info">{{ props.row.sango_unionName }}</span>
+          </b-table-column>
+          <b-table-column
+            field="sango_linkAddTime"
+            label="存活时间"
+            v-slot="props"
+            centered
+          >
+            <span class="tag is-success">
+              {{ props.row.sango_linkAddTime | dateFormat }}
+            </span>
+          </b-table-column>
+          <b-table-column
+            field="token_lastGenerateTime"
+            label="验证更新"
+            v-slot="props"
+            centered
+          >
+            {{ props.row.token_lastGenerateTime | dateFormat }}
+          </b-table-column>
+          <template #empty>
+            <div class="has-text-centered">No records</div>
+          </template>
+        </b-table>
+      </section>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -54,6 +77,8 @@ export default {
       links: [],
       url: "",
       updateTime: "",
+      isEmpty: false,
+      isLoading: false,
     };
   },
   mounted() {
@@ -106,16 +131,17 @@ export default {
 };
 </script>
 <style>
-.el-table {
-  width: 50vw;
-  margin-top: 3vh;
-  font-size: 0.5rem;
-  text-align: center;
+.status {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
 }
-.el-alert {
+.status_table {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1vh;
+}
+.b-table {
+  width: 50vw;
 }
 </style>
