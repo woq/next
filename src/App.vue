@@ -1,17 +1,18 @@
 <template>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
 
 <script>
-
 export default {
-  name: 'app',
-}
+  name: "app",
+};
 </script>
 
 <style>
-html{
-  font-family: "Montserrat","Helvetica Neue", Helvetica,'思源黑体', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+html {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, "思源黑体",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+    sans-serif;
   text-align: center;
   height: 100vh;
 }
@@ -19,11 +20,11 @@ html{
   text-decoration: none;
   color: black;
 }
-a{
+a {
   text-decoration: none;
   color: black;
 }
-.el-aside{
+.el-aside {
   height: 100vh;
 }
 </style>
