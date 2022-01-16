@@ -24,7 +24,4 @@ a {
   text-decoration: none;
   color: black;
 }
-.el-aside {
-  height: 100vh;
-}
 </style>

@@ -98,7 +98,6 @@ export default {
       this.url = "https://lms.sangoo.xyz/api";
     }
     if (localStorage.getItem("access") != null) {
-      console.log("yes");
       axios
         .post(this.url + "/token/verify", {
           token: localStorage.getItem("access"),
