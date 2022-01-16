@@ -29,6 +29,16 @@ const routes = [
     name: "Status",
     component: () => import("../views/Status.vue"),
   },
+  {
+    path: "/addlog",
+    name: "addLog",
+    component: () => import("../views/addLog.vue"),
+  },
+  {
+    path: "/expiredlog",
+    name: "expiredLog",
+    component: () => import("../views/expiredLog.vue"),
+  },
 ];
 
 const router = new VueRouter({
