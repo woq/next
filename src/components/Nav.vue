@@ -20,6 +20,9 @@
           过期记录
         </b-navbar-item>
       </b-navbar-dropdown>
+      <b-navbar-dropdown label="每天" hoverable>
+        <b-navbar-item href="#"> 攻伐使用 </b-navbar-item>
+      </b-navbar-dropdown>
       <b-navbar-dropdown label="每周" hoverable>
         <b-navbar-item href="#"> 周联盟战绩 </b-navbar-item>
         <b-navbar-item href="#"> 周联盟消费 </b-navbar-item>
