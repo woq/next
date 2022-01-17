@@ -39,6 +39,11 @@ const routes = [
     name: "expiredLog",
     component: () => import("../views/expiredLog.vue"),
   },
+  {
+    path: "/weekunioninfo",
+    name: "weekunioninfo",
+    component: () => import("../views/weekUnionInfo.vue"),
+  },
 ];
 
 const router = new VueRouter({

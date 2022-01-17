@@ -24,16 +24,23 @@
         <b-navbar-item href="#"> 攻伐使用 </b-navbar-item>
       </b-navbar-dropdown>
       <b-navbar-dropdown label="每周" hoverable>
-        <b-navbar-item href="#"> 周联盟战绩 </b-navbar-item>
+        <b-navbar-item
+          href="#"
+          tag="router-link"
+          :to="{ path: '/weekunioninfo' }"
+        >
+          周联盟战绩
+        </b-navbar-item>
         <b-navbar-item href="#"> 周联盟消费 </b-navbar-item>
       </b-navbar-dropdown>
       <b-navbar-dropdown label="每月" hoverable>
         <b-navbar-item href="#"> 月王族等级 </b-navbar-item>
         <b-navbar-item href="#"> 月天下第一 </b-navbar-item>
       </b-navbar-dropdown>
-      <b-navbar-item href="#" tag="router-link" :to="{ path: '/defend' }">
-        驻防
-      </b-navbar-item>
+      <b-navbar-dropdown label="驻防" hoverable>
+        <b-navbar-item href="#"> 驻防状态 </b-navbar-item>
+        <b-navbar-item href="#"> 驻防设置 </b-navbar-item>
+      </b-navbar-dropdown>
     </template>
 
     <template #end>
