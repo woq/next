@@ -97,6 +97,7 @@ export default {
     } else {
       this.url = "https://lms.sangoo.xyz/api";
     }
+    document.title = "登录";
     if (localStorage.getItem("access") != null) {
       axios
         .post(this.url + "/token/verify", {

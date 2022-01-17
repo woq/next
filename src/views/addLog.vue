@@ -69,6 +69,7 @@ export default {
     } else {
       this.url = "https://lms.sangoo.xyz/api";
     }
+    document.title = "添加记录";
     this.addSome();
   },
   methods: {

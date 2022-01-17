@@ -47,6 +47,7 @@ export default {
     } else {
       this.url = "https://lms.sangoo.xyz/api";
     }
+    document.title = "添加链接";
   },
   methods: {
     addSome() {

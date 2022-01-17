@@ -4,13 +4,13 @@
     <div class="status_table">
       <section>
         <b-field>
-          <b-button class="is-small" @click="addSome">手动刷新</b-button>
+          <b-button class="is-small" @click="getInfo">手动刷新</b-button>
         </b-field>
         <b-field>
           <b-tag type="is-primary">{{ updateTime }}</b-tag>
         </b-field>
         <b-table
-          :data="isEmpty ? [] : links"
+          :data="isEmpty ? [] : getData"
           bordered
           striped
           hoverable
@@ -18,46 +18,27 @@
           focusable
           mobile-cards
         >
-          <b-table-column field="sango_id" label="ID" v-slot="props" centered>
-            <span class="tag is-light">{{ props.row.sango_id }}</span>
+          <b-table-column field="userId" label="周" v-slot="props" centered>
+            <span class="tag">{{ props.row.weeksNum }}</span>
           </b-table-column>
 
-          <b-table-column
-            field="sango_name"
-            label="君主"
-            v-slot="props"
-            centered
-          >
-            <span class="tag is-info">{{ props.row.sango_name }}</span>
+          <b-table-column field="level" label="联盟ID" v-slot="props" centered>
+            <span class="tag is-info">{{ props.row.union_id }}</span>
           </b-table-column>
-
-          <b-table-column
-            field="sango_unionName"
-            label="联盟"
-            v-slot="props"
-            centered
-          >
-            <span class="tag is-info">{{ props.row.sango_unionName }}</span>
-          </b-table-column>
-          <b-table-column
-            field="sango_linkAddTime"
-            label="存活时间"
-            v-slot="props"
-            centered
-          >
+          <b-table-column field="addTime" label="联盟" v-slot="props" centered>
             <span class="tag is-success">
-              {{ props.row.sango_linkAddTime | dateFormat }}
+              {{ props.row.union_name }}
             </span>
           </b-table-column>
           <b-table-column
-            field="token_lastGenerateTime"
-            label="验证更新"
+            field="addTime"
+            label="联盟消费"
             v-slot="props"
             centered
           >
             <span class="tag is-success is-light">
-              {{ props.row.token_lastGenerateTime | dateFormat }}</span
-            >
+              {{ props.row.weekSecConsume }}
+            </span>
           </b-table-column>
           <template #empty>
             <div class="has-text-centered">暂无数据</div>
@@ -80,7 +61,7 @@ export default {
   data() {
     return {
       urls: "",
-      links: [],
+      getData: [],
       url: "",
       updateTime: "",
       isEmpty: false,
@@ -93,13 +74,13 @@ export default {
     } else {
       this.url = "https://lms.sangoo.xyz/api";
     }
-    document.title = "状态";
-    this.addSome();
+    document.title = "联盟消费";
+    this.getInfo();
   },
   methods: {
-    addSome() {
+    getInfo() {
       axios
-        .get(this.url + "/link", {
+        .get(this.url + "/WeekUnionInfo", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
             "Content-Type": "application/x-www-form-urlencoded",
@@ -109,7 +90,7 @@ export default {
           dayjs.locale("zh-cn");
           this.updateTime =
             "更新时间   " + dayjs().format("YYYY-MM-DD HH:mm:ss");
-          this.links = res.data;
+          this.getData = res.data;
           this.$message.success("加载成功");
         })
         .catch((err) => {
