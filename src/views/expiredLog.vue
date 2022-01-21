@@ -18,46 +18,40 @@
           focusable
           mobile-cards
         >
-          <b-table-column field="sango_id" label="ID" v-slot="props" centered>
-            <span class="tag is-light">{{ props.row.sango_id }}</span>
+          <b-table-column field="userId" label="ID" v-slot="props" centered>
+            <span class="tag is-info is-light">{{ props.row.sango_id }}</span>
           </b-table-column>
 
-          <b-table-column
-            field="sango_name"
-            label="君主"
-            v-slot="props"
-            centered
-          >
-            <span class="tag is-info">{{ props.row.sango_name }}</span>
+          <b-table-column field="level" label="等级" v-slot="props" centered>
+            <span class="tag is-info is-light">{{
+              props.row.sango_level
+            }}</span>
           </b-table-column>
-
-          <b-table-column
-            field="sango_unionName"
-            label="联盟"
-            v-slot="props"
-            centered
-          >
-            <span class="tag is-info">{{ props.row.sango_unionName }}</span>
+          <b-table-column field="level" label="君主" v-slot="props" centered>
+            <span class="tag is-info is-light">{{ props.row.sango_name }}</span>
+          </b-table-column>
+          <b-table-column field="level" label="联盟" v-slot="props" centered>
+            <span class="tag is-info is-light">{{
+              props.row.sango_unionName
+            }}</span>
           </b-table-column>
           <b-table-column
-            field="sango_linkAddTime"
-            label="存活时间"
+            field="addTime"
+            label="添加时间"
             v-slot="props"
             centered
           >
             <span class="tag is-success">
-              {{ props.row.sango_linkAddTime | dateFormat }}
+              {{ props.row.sango_linkAddTime | normalFormat }}
             </span>
           </b-table-column>
           <b-table-column
-            field="token_lastGenerateTime"
-            label="验证更新"
+            field="level"
+            label="过期时间"
             v-slot="props"
             centered
           >
-            <span class="tag is-success is-light">
-              {{ props.row.token_lastGenerateTime | dateFormat }}</span
-            >
+            <span class="tag is-danger">{{ props.row.link_expiredTime }}</span>
           </b-table-column>
           <template #empty>
             <div class="has-text-centered">暂无数据</div>
@@ -93,12 +87,13 @@ export default {
     } else {
       this.url = "https://lms.sangoo.xyz/api";
     }
+    document.title = "过期记录";
     this.addSome();
   },
   methods: {
     addSome() {
       axios
-        .get(this.url + "/link", {
+        .get(this.url + "/expiredlog", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
             "Content-Type": "application/x-www-form-urlencoded",
@@ -133,6 +128,10 @@ export default {
       //return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
       let minutes = dayjs().diff(dayjs(time), "minutes");
       return Math.floor(minutes / 60) + " 时 " + (minutes % 60) + " 分";
+    },
+    normalFormat(time) {
+      //return dayjs(time).format('YYYY-MM-DD HH:mm:ss')
+      return dayjs(time).format("YYYY-MM-DD HH:mm:ss");
     },
   },
 };
