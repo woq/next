@@ -35,6 +35,11 @@ const routes = [
     component: () => import("../views/addLog.vue"),
   },
   {
+    path: "/gflog",
+    name: "gfLog",
+    component: () => import("../views/gfLog.vue"),
+  },
+  {
     path: "/expiredlog",
     name: "expiredLog",
     component: () => import("../views/expiredLog.vue"),
